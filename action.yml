@@ -1,0 +1,35 @@
+name: 'Mirror to Remote GitHub Action'
+description: 'Mirrors a GitHub repository to Remote Repo'
+branding:
+  icon: upload-cloud
+  color: blue
+inputs:
+  username:
+    required: true
+    default: ${{ github.actor }}
+  password:
+    required: true
+  company:
+    required: true
+  repository:
+    required: true
+    default: ${{ github.event.repository.name }}
+  branch:
+    required: false
+    default: ${{ github.ref_name }}
+  ignorelist:
+    required: true
+  dest_repo_url:
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'docker://101digital/code-share-action:latest'
+  args:
+    - ${{ inputs.username }}
+    - ${{ inputs.password }}
+    - ${{ inputs.company }}
+    - ${{ inputs.repository }}
+    - ${{ inputs.branch }}
+    - ${{ inputs.ignorelist }}
+    - ${{ inputs.dest_repo_url }}
