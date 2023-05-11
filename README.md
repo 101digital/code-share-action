@@ -37,6 +37,6 @@ None
         uses: 101digital/code-share-action@main
         with:
           username: username
-          password: ${{ secrets.UD_BITBUCKET_PASSWORD }}
+          password: ${{ secrets.BITBUCKET_PASSWORD }}
           company: company_name
           repository: wallet-service
