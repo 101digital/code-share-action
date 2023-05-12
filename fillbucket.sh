@@ -17,11 +17,11 @@ trap - INT TERM EXIT
 
 CURL_OPTS=(-u "$username:$password" --silent)
 
-echo "Validating Repo credentials..."
-curl --fail "${CURL_OPTS[@]}" "https://$dest_repo_url/api/v3/user" > /dev/null || (
-    echo "... failed. Most likely, the provided credentials are invalid. Terminating..."
-    exit 1
-)
+#echo "Validating Repo credentials..."
+#curl --fail "${CURL_OPTS[@]}" "https://$dest_repo_url/api/v3/user" > /dev/null || (
+#    echo "... failed. Most likely, the provided credentials are invalid. Terminating..."
+#    exit 1
+#)
 
 
 reponame=$(echo $reponame | tr '[:upper:]' '[:lower:]')

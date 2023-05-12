@@ -17,10 +17,11 @@ inputs:
   branch:
     required: false
     default: ${{ github.ref_name }}
-  ignorelist:
-    required: true
   dest_repo_url:
     required: true
+  ignorelist:
+    required: true
+
 
 runs:
   using: 'docker'
@@ -31,5 +32,6 @@ runs:
     - ${{ inputs.company }}
     - ${{ inputs.repository }}
     - ${{ inputs.branch }}
-    - ${{ inputs.ignorelist }}
     - ${{ inputs.dest_repo_url }}
+    - ${{ inputs.ignorelist }}
+
