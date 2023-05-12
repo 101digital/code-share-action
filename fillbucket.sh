@@ -10,8 +10,9 @@ password="$2"
 company="$3"
 reponame="$4"
 branch="$5"
-ignorelist=($7)
 dest_repo_url="$6"
+ignorelist=($7)
+
 
 trap - INT TERM EXIT
 
