@@ -54,7 +54,7 @@ if [ -n "$ignorelist" ]; then
 for item in "${ignorelist[@]}" ; do echo $item >> .gitignore ; done
 fi
 
-chown $OS_USER:$OS_USER * 
+chmod 777 -R * 
 
 echo "Commit the latest changes to $branch branch.."
 git add .
