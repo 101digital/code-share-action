@@ -12,6 +12,7 @@ reponame="$4"
 branch="$5"
 dest_repo_url="$6"
 ignorelist=($7)
+OS_USER=`whoami`
 
 
 trap - INT TERM EXIT
@@ -52,6 +53,8 @@ echo "Adding ignore items if defined"
 if [ -n "$ignorelist" ]; then
 for item in "${ignorelist[@]}" ; do echo $item >> .gitignore ; done
 fi
+
+chown $OS_USER:$OS_USER * 
 
 echo "Commit the latest changes to $branch branch.."
 git add .
