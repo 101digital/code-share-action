@@ -12,7 +12,7 @@ reponame="$4"
 branch="$5"
 dest_repo_url="$6"
 ignorelist=($7)
-OS_USER=`whoami`
+OS_USER="ubuntu"
 
 
 trap - INT TERM EXIT
