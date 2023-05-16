@@ -54,7 +54,9 @@ if [ -n "$ignorelist" ]; then
 for item in "${ignorelist[@]}" ; do echo $item >> .gitignore ; done
 fi
 
+echo "Change the file permission"
 chmod 777 -R * 
+ls -ltr
 
 echo "Commit the latest changes to $branch branch.."
 git add .
