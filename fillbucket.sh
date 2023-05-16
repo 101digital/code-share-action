@@ -65,7 +65,7 @@ echo "Set the remote Repo.. https://"$username:$password"@$dest_repo_url/$compan
 git remote add dest_origin https://"$username:$password"@$dest_repo_url/$company/$reponame
 echo "Pushing to remote..."
 git fetch 
-git pull
+git pull dest_origin $branch
 git push dest_origin $branch --porcelain --force-with-lease --force-if-includes
 echo "Cleanup..."
 ls -ltr
