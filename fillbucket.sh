@@ -43,8 +43,8 @@ curl "${CURL_OPTS[@]}" "https://$dest_repo_url/api/v3/repos/$company/$reponame" 
 
 echo "Pushing to remote..."
 echo "Cleaning the commit history.."
-rm -rf .git
-git init -b $branch
+#rm -rf .git
+#git init -b $branch
 git config --global --add safe.directory "*"
 git config --global user.email "githubactions@101digital.io"
 git config --global user.name "Github Actions"
@@ -61,10 +61,11 @@ ls -ltr
 echo "Commit the latest changes to $branch branch.."
 git add .
 git commit -m "Sync latest changes"
+git branch -M $branch
 echo "Set the remote Repo.. https://"$username:$password"@$dest_repo_url/$company/$reponame"
 git remote add dest_origin https://"$username:$password"@$dest_repo_url/$company/$reponame
 echo "Pushing to remote..."
 git push dest_origin $branch --porcelain --force-with-lease --force-if-includes
 echo "Cleanup..."
 ls -ltr
-rm -rf .git .gitignore
+rm -rf  .gitignore
