@@ -12,7 +12,8 @@ reponame="$4"
 branch="$5"
 dest_repo_url="$6"
 ignorelist=($7)
-OS_USER="ubuntu"
+commithistory="$8"
+
 
 
 trap - INT TERM EXIT
@@ -39,9 +40,19 @@ curl "${CURL_OPTS[@]}" "https://$dest_repo_url/api/v3/repos/$company/$reponame" 
 
 )
 
-
-
 echo "Pushing to remote..."
+if [ ${commithistory} == "true" ];
+then
+{
+echo "Sync the latest changes to $branch branch with full commit history"
+echo "Set the remote Repo.. https://"$username:$password"@$dest_repo_url/$company/$reponame"
+git remote add dest_origin https://"$username:$password"@$dest_repo_url/$company/$reponame.git
+git branch -M $branch
+git push dest_origin $branch --porcelain --force-with-lease --force-if-includes
+
+}
+else
+{
 echo "Cleaning the commit history.."
 rm -rf .git
 git init -b $branch
@@ -53,10 +64,6 @@ echo "Adding ignore items if defined"
 if [ -n "$ignorelist" ]; then
 for item in "${ignorelist[@]}" ; do echo $item >> .gitignore ; done
 fi
-
-#echo "Change the file permission"
-#chmod 777 -R * 
-#ls -ltr
 
 echo "Commit the latest changes to $branch branch.."
 git add .
@@ -70,3 +77,5 @@ git push dest_origin $branch  --force
 echo "Cleanup..."
 ls -ltr
 rm -rf  .gitignore .git
+}
+fi

@@ -21,11 +21,14 @@ inputs:
     required: true
   ignorelist:
     required: true
+  commithistory:
+    required: true
+    default: "false"
 
 
 runs:
   using: 'docker'
-  image: 'docker://101digital/code-share-action:latest'
+  image: 'docker://101digital/code-share-action:2.0.0'
   args:
     - ${{ inputs.username }}
     - ${{ inputs.password }}
@@ -34,4 +37,5 @@ runs:
     - ${{ inputs.branch }}
     - ${{ inputs.dest_repo_url }}
     - ${{ inputs.ignorelist }}
+    - ${{ inputs.commithistory }}
 
