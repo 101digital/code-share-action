@@ -46,8 +46,8 @@ then
 {
 echo "Sync the latest changes to $branch branch with full commit history"
 git config --global --add safe.directory "*"
-git config --global user.email "githubactions@101digital.io"
-git config --global user.name "Github Actions"
+#git config --global user.email "githubactions@101digital.io"
+#git config --global user.name "Github Actions"
 echo "Set the remote Repo.. https://"$username:$password"@$dest_repo_url/$company/$reponame"
 git remote add dest_origin https://"$username:$password"@$dest_repo_url/$company/$reponame.git
 git branch -M $branch
