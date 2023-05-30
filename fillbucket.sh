@@ -70,8 +70,8 @@ if [ ${commithistory} == "true" ]; then
     git config --global http.postBuffer 157286400
     echo "Set the remote Repo.. https://"$username:$password"@$dest_repo_url/$company/$reponame"
     git remote add dest_origin https://"$username:$password"@$dest_repo_url/$company/$reponame
-    git fetch dest_origin
     git branch -M $branch
+    git fetch dest_origin
     git push dest_origin $branch --porcelain --force-with-lease --force-if-includes
 else
     echo "Cleaning the commit history.."
