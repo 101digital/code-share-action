@@ -28,7 +28,7 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'docker://101digital/code-share-action:2.0.0'
+  image: 'docker://101digital/code-share-action:2.1.0'
   args:
     - ${{ inputs.username }}
     - ${{ inputs.password }}
